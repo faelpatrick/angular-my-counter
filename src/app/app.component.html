@@ -4,12 +4,27 @@
     font-family: "Roboto", sans-serif;
     border: none;
   }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin: .4rem 0;
+  }
   .main {
-    display: flex;
-    justify-content: space-around;
     align-items: center;
     height: 90vh;
     margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "left right"
+      "description description";
+
+    justify-items: center;
   }
 
   .left,
@@ -22,7 +37,15 @@
     justify-content: center;
   }
 
-  .contador {
+  .left {
+    grid-area: left;
+  }
+
+  .right {
+    grid-area: right;
+  }
+
+  .counter {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,17 +82,42 @@
     transform: scale(1.1);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   }
+
+  .description {
+    grid-area: description;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f2f2f2;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+    border: solid 5px #f2f2f2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    padding: 2rem;
+    width: 90%;
+    height: 90%;
+  }
 </style>
 
 <div class="main">
   <div class="left">
-    <div class="contador">{{ count1 }}</div>
-    <h1>Contador 1</h1>
+    <div class="counter">{{ count1 }}</div>
+    <h1>counter 1</h1>
     <button (click)="increment1()">Incrementar</button>
   </div>
   <div class="right">
-    <div class="contador">{{ count2 }}</div>
-    <h1>Contador</h1>
+    <div class="counter">{{ count2 }}</div>
+    <h1>counter</h1>
     <button (click)="increment2()">Incrementar</button>
+  </div>
+  <div class="description">
+    <h2>Total de clicks: {{ count1 + count2 }}</h2>
+    <h2>Highest Value: {{ count1 > count2 ? count1 : count2 }}</h2>
+    <h2>Lowest Value: {{ count1 < count2 ? count1 : count2}}</h2>
+    <h2>Difference Between : {{ count1 > count2 ? count1 - count2 : count2 - count1 }}</h2>
   </div>
 </div>
