@@ -11,7 +11,7 @@
 
   h2 {
     font-size: 1.4rem;
-    margin: .4rem 0;
+    margin: 0.4rem 0;
   }
   .main {
     align-items: center;
@@ -78,6 +78,18 @@
     transition: all 0.3s;
   }
 
+  @media screen and (max-width: 1024px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+    button {
+      height: 55px;
+      width: 120px;
+      font-size: 15px;
+      margin: 0;
+    }
+  }
+
   button:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -106,18 +118,21 @@
 <div class="main">
   <div class="left">
     <div class="counter">{{ count1 }}</div>
-    <h1>counter 1</h1>
-    <button (click)="increment1()">Incrementar</button>
+    <h1>Counter 1</h1>
+    <button (click)="increment1()">Increment</button>
   </div>
   <div class="right">
     <div class="counter">{{ count2 }}</div>
-    <h1>counter</h1>
-    <button (click)="increment2()">Incrementar</button>
+    <h1>Counter 2</h1>
+    <button (click)="increment2()">Increment</button>
   </div>
   <div class="description">
     <h2>Total de clicks: {{ count1 + count2 }}</h2>
     <h2>Highest Value: {{ count1 > count2 ? count1 : count2 }}</h2>
-    <h2>Lowest Value: {{ count1 < count2 ? count1 : count2}}</h2>
-    <h2>Difference Between : {{ count1 > count2 ? count1 - count2 : count2 - count1 }}</h2>
+    <h2>Lowest Value: {{ count1 < count2 ? count1 : count2 }}</h2>
+    <h2>
+      Difference Between :
+      {{ count1 > count2 ? count1 - count2 : count2 - count1 }}
+    </h2>
   </div>
 </div>
